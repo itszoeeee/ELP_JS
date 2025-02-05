@@ -57,16 +57,16 @@ function getRandomWords() {
 function compteur(mot, liste) {
     let x = 0;
     for (let i = 0; i < liste.length; i++) {
-        if (liste[i] === mot) {
+        if (liste[i].toLowerCase() === mot.toLowerCase()) {
             x++;
         }
     }
     return x;
 }
 
-// Fonction pour vérifier si un mot contient un espace
+// Fonction qui vérifie qu'un mot ne contient pas d'espace sauf au début ou à la fin 
 function un_seul_mot(mot) {
-    return !mot.includes(" ");
+    return /^(\s*)[^\s]+(\s*)$/.test(mot);
 }
 
 // Fonction pour afficher le résultat en fonction du score
@@ -114,33 +114,41 @@ async function jouer() {
             } while (dev > 5 || dev < 1);
 
             const mot = carte[0][dev - 1];
-            console.log("Le mot à deviner est", mot);
+            console.log("Le mot à deviner est :", mot);
 
-            let ind = [];
+            let indices = [];
             for (let j = 0; j < nbr_joueurs; j++) {
                 if (j !== i) {
-                    const indice = await askQuestion(`${liste_joueurs[j]}, quel est votre indice ? -> `);
-                    ind.push(indice);
+                    let indice_donne = await askQuestion(`${liste_joueurs[j]}, quel est votre indice ? -> `);
+                    while (indice_donne.toLowerCase() == mot.toLowerCase()) {
+                        indice_donne = await askQuestion(`${liste_joueurs[j]}, il faut un indice différent du mot à faire deviner -> `);
+                    }
+                    indices.push(indice_donne); // la liste de tous les indices données
                 }
             }
 
-            let ind_valide = [];
-            for (let a of ind) {
-                if (compteur(a, ind) <= 1 && un_seul_mot(a)) {
-                    ind_valide.push(a);
+            let indices_valides = [];
+            for (let ind of indices) { // tu parcoure la liste de tous les indices
+                if (compteur(ind, indices) <= 1 && un_seul_mot(ind)) { // on vérifie que les indices soient valides aka ils n'apparaissent qu'une seule fois et ils n'ont pas d'espace (car pas de mot composé autorisé)
+                    indices_valides.push(ind);
                 }
             }
-            console.log("Voici les indices donnés :", ind_valide);
+            if (indices_valides.length != 0){
+                console.log("Voici les indices donnés :", indices_valides);
+            }
+            else {
+                console.log ("Il n'y a pas d'indices, tes coéquipiers n'ont pas eu d'inspi");
+            }
 
             const rep = await askQuestion(`${liste_joueurs[i]}, quel est votre mot ? -> `);
-            if (rep === mot) {
+            if (rep.toLowerCase() === mot.toLowerCase()) {
                 console.log("Bravo !");
                 points += 1;
             } else {
-                console.log("Non, le mot était", mot);
+                console.log("Non, le mot était :", mot);
             }
+            nbr_cartes_dans_pioche -= 1; // on decremente le nombre de cartes a chaque tour 
         }
-        nbr_cartes_dans_pioche -= 1;
     }
 
     if (nbr_cartes_dans_pioche==0){
