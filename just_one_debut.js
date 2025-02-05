@@ -18,7 +18,7 @@ const dico = [
     "casque","chaise", "chanson", "chat", "chaussure", "ciel", "circuit","classe", "colère", "couleur", "cuisine",  
     "dauphin", "déni", "dessin","doré", "dormir", 
     "eau", "école", "écriture", "élève", "espoir", "été", "étoile", "examen",  
-    "fenêtre", "film", "fleur", "fromage", "fruit",  
+    "fenêtre", "film", "Finlande", "fleur", "fromage", "fruit",  
     "gris",  
     "hérisson", "hiver", "hydrogène",  
     "insecte", "Italie", 
@@ -84,7 +84,7 @@ function resultat(pts) {
     } else if (pts === 12) {
         return "Si près et pourtant si loin";
     } else if (pts === 13) {
-        return "Ok sans faute mais c'est qu'un jeu ya pas de quoi frimer";
+        return "WOW BRAVO VOUS ETES TROP TROP FORTS CEST TROP INCROYABLE";
     }
 }
 
@@ -99,7 +99,8 @@ async function jouer() {
 
     
     let points = 0;
-    while (points < 14) { // car dans la règle on joue jusqu'à obtenir treize points
+    let nbr_cartes_dans_pioche  = 20;
+    while ((points < 14) && (nbr_cartes_dans_pioche > 0)) { // car dans la règle on joue jusqu'à obtenir treize points
         for (let i = 0; i < nbr_joueurs; i++) { // pour tourner entre les joueurs
             let carte = [getRandomWords()]; // nouvelle carte
             console.log("On pioche une nouvelle carte :");
@@ -131,7 +132,7 @@ async function jouer() {
             }
             console.log("Voici les indices donnés :", ind_valide);
 
-            const rep = await askQuestion("Quel est votre mot ? -> ");
+            const rep = await askQuestion(`${liste_joueurs[i]}, quel est votre mot ? -> `);
             if (rep === mot) {
                 console.log("Bravo !");
                 points += 1;
@@ -139,9 +140,12 @@ async function jouer() {
                 console.log("Non, le mot était", mot);
             }
         }
+        nbr_cartes_dans_pioche -= 1;
     }
 
-    console.log(`Vous avez obtenu ${points} points. ${resultat(points)}`);
+    if (nbr_cartes_dans_pioche==0){
+        console.log("Il n'y a plus de cartes dans la pioche. Comptons votre nombre de points.");}
+    console.log(`Vous avez réussi à deviner ${points} cartes avec succès. ${resultat(points)}`);
     rl.close();
 }
 
