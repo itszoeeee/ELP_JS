@@ -13,26 +13,41 @@ function askQuestion(query) {
 
 // Liste des mots du dictionnaire
 const dico = [
-    "chat", "chien", "maison", "voiture", "arbre", "porte", "fenêtre", "balle", "ordinateur", 
-    "téléphone", "stylo", "papier", "montagne", "mer", "plage", "vêtement", "chaussure", "livre", 
-    "musique", "chanson", "film", "acteur", "actrice", "table", "chaise", "cuisine", "restaurant", 
-    "pain", "fromage", "fruit", "légume", "salade", "eau", "saison", "été", "hiver", "automne", 
-    "printemps", "fleur", "oiseau", "poisson", "insecte", "papillon", "plante", "nature", "soleil", 
-    "lune", "étoile", "ciel", "nuage", "pluie", "neige", "vent", "tempête", "sable", "brouillard", 
-    "couleur", "rouge", "bleu", "vert", "jaune", "noir", "blanc", "gris", "marron", "violet", "rose", 
-    "argent", "or", "argenté", "doré", "bonté", "amitié", "joie", "tristesse", "colère", "peur", 
-    "rire", "sommeil", "réveil", "jour", "nuit", "matin", "soir", "semaine", "mois", "année", "vie", 
-    "mort", "amour", "espoir", "travail", "loisir", "vacances", "sport", "jeu", "école", "professeur", 
-    "élève", "classe", "examen", "note", "écriture", "lecture"
-];
+    "actrice", "amitié", "amour", "année", "arbre", "argent", "argenté", "automne", "avion", 
+    "balle", "blanc", "bleu", "bonté", "brouillard",  
+    "casque","chaise", "chanson", "chat", "chaussure", "ciel", "circuit","classe", "colère", "couleur", "cuisine",  
+    "dauphin", "déni", "dessin","doré", "dormir", 
+    "eau", "école", "écriture", "élève", "espoir", "été", "étoile", "examen",  
+    "fenêtre", "film", "fleur", "fromage", "fruit",  
+    "gris",  
+    "hérisson", "hiver", "hydrogène",  
+    "insecte", "Italie", 
+    "jaune", "jeu", "joie", "jour", 
+    "kayak","kiwi", 
+    "lecture", "légume", "livre", "loisir", "lune",  
+    "maison", "matin", "marron", "mélodie", "mer", "mois", "mort", "montagne", "musique",  
+    "nature", "neige", "noir", "note", "nuit", "nuage",  
+    "ordinateur", "oiseau", "or", "oxydation",  
+    "papillon", "papier", "peur", "pizza","plage", "pain", "plante", "pluie", "poney", "porte", "printemps", "professeur",
+    "question", "quille", "quokka", 
+    "restaurant", "respirer", "réveil", "rire", "rose", "rouge", "routeur",  
+    "sable", "salade", "saison", "semaine", "soleil", "sommeil", "soir", "sport", "stylo",  
+    "table", "tempête", "téléphone", "tristesse", "travail",  
+    "usine",
+    "vacances", "vent", "vert", "vêtement", "vie", "violet", "voiture",
+    "wagon", "wombat",
+    "xylophone",
+    "yaourt",
+    "zèbre"
+    ];
 
 // Fonction pour choisir des mots aléatoires
 function getRandomWords() {
-    let mots_aleat = [];
-    while (mots_aleat.length < 5) {
+    let mots_aleatoire = [];
+    while (mots_aleatoire.length < 5) {
         let randomIndex = Math.floor(Math.random() * dico.length);
-        if (!mots_aleat.includes(dico[randomIndex])) {
-            mots_aleat.push(dico[randomIndex]);
+        if (!mots_aleatoire.includes(dico[randomIndex])) {
+            mots_aleatoire.push(dico[randomIndex]);
         }
     }
     return mots_aleat;
