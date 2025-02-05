@@ -41,7 +41,7 @@ const dico = [
     "zèbre"
     ];
 
-// Fonction pour choisir des mots aléatoires
+// Fonction pour choisir cinq mots aléatoires pour creer une carte
 function getRandomWords() {
     let mots_aleatoire = [];
     while (mots_aleatoire.length < 5) {
@@ -50,7 +50,7 @@ function getRandomWords() {
             mots_aleatoire.push(dico[randomIndex]);
         }
     }
-    return mots_aleat;
+    return mots_aleatoire;
 }
 
 // Fonction pour compter combien de fois un mot apparaît dans une liste
@@ -93,42 +93,43 @@ async function jouer() {
     const nbr_joueurs = parseInt(await askQuestion("Combien de joueurs ? -> "));
     let liste_joueurs = [];
     for (let i = 0; i < nbr_joueurs; i++) {
-        const prenom = await askQuestion(`Name of player ${i + 1} : `);
+        const prenom = await askQuestion(`Prénom du joueur ${i + 1} : `);
         liste_joueurs.push(prenom);
     }
 
-    let carte = [getRandomWords()];
-    // console.log(carte);
-
+    
     let points = 0;
-    while (points < 14) {
-        for (let i = 0; i < nbr_joueurs; i++) {
+    while (points < 14) { // car dans la règle on joue jusqu'à obtenir treize points
+        for (let i = 0; i < nbr_joueurs; i++) { // pour tourner entre les joueurs
+            let carte = [getRandomWords()]; // nouvelle carte
+            console.log("On pioche une nouvelle carte :");
+            console.log(carte);
             let dev;
             do {
-                dev = parseInt(await askQuestion(`Joueur ${i + 1}, piochez une carte et choisissez un chiffre entre 1 et 5 : `));
+                dev = parseInt(await askQuestion(`${liste_joueurs[i]}, choisissez un chiffre entre 1 et 5 : `));
                 if (dev > 5 || dev < 1) {
                     console.log("Veuillez choisir un chiffre entre 1 et 5 !");
                 }
             } while (dev > 5 || dev < 1);
 
             const mot = carte[0][dev - 1];
-            // console.log("Le mot à deviner est", mot);
+            console.log("Le mot à deviner est", mot);
 
             let ind = [];
             for (let j = 0; j < nbr_joueurs; j++) {
                 if (j !== i) {
-                    const indice = await askQuestion(`Joueur ${j + 1}, quel est votre indice ? -> `);
+                    const indice = await askQuestion(`${liste_joueurs[j]}, quel est votre indice ? -> `);
                     ind.push(indice);
                 }
             }
 
-            let ind_val = [];
+            let ind_valide = [];
             for (let a of ind) {
                 if (compteur(a, ind) <= 1 && un_seul_mot(a)) {
-                    ind_val.push(a);
+                    ind_valide.push(a);
                 }
             }
-            console.log("Voici les indices donnés :", ind_val);
+            console.log("Voici les indices donnés :", ind_valide);
 
             const rep = await askQuestion("Quel est votre mot ? -> ");
             if (rep === mot) {
