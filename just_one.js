@@ -80,7 +80,7 @@ function un_seul_mot(mot) {
 
 // Fonction pour afficher un commentaire en fonction du score
 function resultat(pts) {
-    if (pts > 0 && pts <= 3) {
+    if (pts >= 0 && pts <= 3) {
         return "Essayez encore.";
     } else if (pts > 3 && pts <= 6) {
         return "C'est un bon début. Réessayez.";
@@ -116,19 +116,23 @@ async function jouer() {
         liste_joueurs.push(prenom);
     }
     let points = 0;
-    let nbr_cartes_dans_pioche  = 13;
+    let nbr_cartes_dans_pioche = 13;
     let mots_deja_apparus = []; // pour qu'aucune carte n'ait les memes mots
-    while (nbr_cartes_dans_pioche > 0) { 
+    while (nbr_cartes_dans_pioche > 0) {
         for (let i = 0; i < nbr_joueurs; i++) { // pour tourner entre les joueurs
+            if (nbr_cartes_dans_pioche==0) {
+                break;
+            }
+            
             fs.appendFile('indices.txt', '\n\nIndices donnés au tour '+(14-nbr_cartes_dans_pioche) + ' :\n', (err) => {
                 if (err) {
                     console.error('Erreur lors de l\'écriture dans le fichier', err);
                 }
                 });
-    
+            
             let carte = [getRandomWords(mots_deja_apparus)]; // nouvelle carte
             if (nbr_cartes_dans_pioche!=13) {
-            await sleep(3000); // on attend 3 secondes avant de recommencer un tour 
+                await sleep(3000); // on attend 3 secondes avant de recommencer un tour 
             }
             console.log(carte);
             console.log('\n'.repeat(50));
