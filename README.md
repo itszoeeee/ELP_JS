@@ -17,4 +17,4 @@ Le jeu se termine lorsque la pioche est vide (nous avons défini une constante n
 - une fois que tous les joueurs ont donné leur indices, on sélectionne parmi ceux-ci les indices valides et on les renvoie au joueur 1
 - le joueur 1 propose un mot qu'on compare avec le mot caché et s'il réussit, le nombre de points est augmenté de 1
 - la pioche perd 1 carte, et c'est maintenant au joueur 2
-- les tours continuent jusqu'à ce que soit les joueurs ont atteint 13 points, soit la pioche est vide
+- les tours continuent jusqu'à ce que les joueurs atteignent 13 points ou que la pioche est vide
