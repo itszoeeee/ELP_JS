@@ -11,7 +11,7 @@ La validité d'un indice se mesure à :<br>
 <br>
 Grâce à l'attribut .toLowerCase(), le code ne dinstingue pas les majuscules et les minuscules (ex italie = Italie = ITALIE). <br>
 Le jeu se termine lorsque la pioche est vide (nous avons défini une constante nombre_cartes = 20) ou lorsque les joueurs atteignent le score de 13 points. <br>
-Déroulement du jeu : <br>
+Déroulement du jeu :
 - le code commence par demander à l'utilisateur le nombre de joueurs et leurs prénoms
 - le 1er tour démarre. Une nouvelle carte de 5 mots aléatoires choisis parmi le dictionnaire donné est générée et affichée. Le joueur 1 est incité à choisir un chiffre entre 1 et 5, ce qui donnera le mot à faire deviner.
 - les autres joueurs donnent tour à tour leur indice (différent du mot caché), qui sera entré dans la console et stocké dans une liste d'indices
