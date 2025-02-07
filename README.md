@@ -8,3 +8,4 @@ La validité d'un indice se mesure à son unicité (il n'a été donné qu'une f
 Le jeu se termine lorsque la pioche est vide (nous avons défini une constante nombre_cartes = 20) ou lorsque les joueurs atteignent le score de 13 points. <br>
 <br>
 Déroulement du jeu : <br>
+- le code commence 
