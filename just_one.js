@@ -91,7 +91,10 @@ function resultat(pts) {
 
 // Fonction principale du jeu
 async function jouer() {
-    const nbr_joueurs = parseInt(await askQuestion("Combien de joueurs ? -> "));
+    let nbr_joueurs;
+    do {
+        nbr_joueurs = parseInt(await askQuestion("Combien de joueurs ? -> "));
+    } while (!Number.isInteger(nbr_joueurs));
     let liste_joueurs = [];
     for (let i = 0; i < nbr_joueurs; i++) {
         const prenom = await askQuestion(`Prénom du joueur ${i + 1} : `);
@@ -109,9 +112,6 @@ async function jouer() {
             let dev;
             do {
                 dev = parseInt(await askQuestion(`${liste_joueurs[i]}, choisissez un chiffre entre 1 et 5 : `));
-                if (!Number.isInteger(dev) || dev > 5 || dev < 1) {
-                    console.log("Veuillez choisir un chiffre entre 1 et 5 !");
-                }
             } while (!Number.isInteger(dev) || dev > 5 || dev < 1);
 
             const mot = carte[0][dev - 1];
