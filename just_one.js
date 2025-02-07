@@ -103,8 +103,8 @@ async function jouer() {
 
     
     let points = 0;
-    let nbr_cartes_dans_pioche  = 20;
-    while ((points < 14) && (nbr_cartes_dans_pioche > 0)) { // car dans la règle on joue jusqu'à obtenir treize points
+    let nbr_cartes_dans_pioche  = 13;
+    while (nbr_cartes_dans_pioche > 0) { 
         for (let i = 0; i < nbr_joueurs; i++) { // pour tourner entre les joueurs
             let carte = [getRandomWords()]; // nouvelle carte
             console.log("On pioche une nouvelle carte :");
@@ -152,8 +152,7 @@ async function jouer() {
         }
     }
 
-    if (nbr_cartes_dans_pioche==0){
-        console.log("Il n'y a plus de cartes dans la pioche. Comptons votre nombre de points.");}
+    console.log("Il n'y a plus de cartes dans la pioche. Comptons votre nombre de points.");
     console.log(`Vous avez réussi à deviner ${points} cartes avec succès. ${resultat(points)}`);
     rl.close();
 }
