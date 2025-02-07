@@ -175,7 +175,7 @@ async function jouer() {
         }
     }
 
-    console.log("Il n'y a plus de cartes dans la pioche. Comptons votre nombre de points.");
+    console.log("Fin de la partie. ");
     console.log(`Vous avez réussi à deviner ${points} cartes avec succès. ${resultat(points)}`);
     rl.close();
 }
