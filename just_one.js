@@ -129,8 +129,8 @@ async function jouer() {
             }
 
             let indices_valides = [];
-            for (let ind of indices) { // tu parcoure la liste de tous les indices
-                if (compteur(ind, indices) <= 1 && un_seul_mot(ind)) { // on vérifie que les indices soient valides aka ils n'apparaissent qu'une seule fois et ils n'ont pas d'espace (car pas de mot composé autorisé)
+            for (let ind of indices) { // on parcoure la liste de tous les indices donnés
+                if (compteur(ind, indices) <= 1 && un_seul_mot(ind)) { // on vérifie que les indices soient valides càd ils n'apparaissent qu'une seule fois et ils n'ont pas d'espace (car pas de mot composé autorisé)
                     indices_valides.push(ind);
                 }
             }
