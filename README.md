@@ -1,8 +1,7 @@
 # ELP_JS : Réalisation du jeu Just One - Bleuenn EVEN et Zoé FEUILLOY
 
-Nous avons créé un code JavaScript qui recrée le jeu Just One. <br> 
 ### Principe général
-Pour l'instant, tout se passe sur la même interface, ainsi pour jouer correctement il faudrait une personne intermédiaire derrière l'écran qui annonce le mot caché à faire deviner et écrit dans la console les indices de chaque joueur. <br>
+Ce code JavaScript  recrée le jeu Just One. Dans cette version du projet, tout se passe sur la même interface, ainsi pour jouer correctement il faudrait une personne intermédiaire derrière l'écran qui annonce le mot caché à faire deviner et écrit dans la console les indices de chaque joueur. <br>
 La validité d'un indice se mesure à :<br>
 - son unicité (il n'a été donné qu'une fois) => fonction COMPTEUR(mot, liste) qui compte le nombre d'occurences d'un mot dans une liste
 - l'absence d'espaces => fonction UN_SEUL_MOT(mot) qui s'assure de l'absence d'espaces dans une chaine de caractères mais les accepte au début ou à la fin
@@ -19,4 +18,6 @@ Le jeu se termine lorsque la pioche (13 cartes) est vide. <br>
 - les tours continuent jusqu'à ce que les joueurs atteignent 13 points ou que la pioche soit vide
 - après la fin de la partie, le score est affiché
 ### Lancement du programme :
-Ouvrez une invite de commande cmd.exe et rendez-vous dans le répertoire où se trouvent les fichiers. Entrez "npm install" puis "npm start".
+- Ouvrez une invite de commande cmd.exe
+- Rendez-vous dans le répertoire où se trouvent les fichiers
+- Entrez "npm install" puis "npm start" pour executer le programme du jeu
