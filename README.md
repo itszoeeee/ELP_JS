@@ -4,13 +4,17 @@
 
 Nous avons créé un code JavaScript qui recrée le jeu Just One. <br>
 Pour l'instant, tout se passe sur la même interface, ainsi pour jouer correctement il faudrait une personne intermédiaire derrière l'écran qui annonce le mot caché à faire deviner et écrit dans la console les indices de chaque joueur. <br>
-La validité d'un indice se mesure à son unicité (il n'a été donné qu'une fois), à l'absence d'espaces (un seul mot) et à sa différence avec le mot proposé. Le code ne dinstingue pas les majuscules et les minuscules (ex italie = Italie = ITALIE). <br>
+La validité d'un indice se mesure à :<br>
+- son unicité (il n'a été donné qu'une fois) => fonction COMPTEUR(mot, liste) qui compte le nombre d'occurences d'un mot dans une liste
+- l'absence d'espaces (un seul mot) => fonction UN_SEUL_MOT(mot) qui s'assure de l'absence d'espaces dans une chaine de caractères
+- sa différence avec le mot proposé. <br>
+Grâce à l'attribut .toLowerCase(), le code ne dinstingue pas les majuscules et les minuscules (ex italie = Italie = ITALIE). <br>
 Le jeu se termine lorsque la pioche est vide (nous avons défini une constante nombre_cartes = 20) ou lorsque les joueurs atteignent le score de 13 points. <br>
 <br>
 Déroulement du jeu : <br>
 - le code commence par demander à l'utilisateur le nombre de joueurs et leurs prénoms
 - le 1er tour démarre. Une nouvelle carte de 5 mots aléatoires choisis parmi le dictionnaire donné est générée et affichée. Le joueur 1 est incité à choisir un chiffre entre 1 et 5, ce qui donnera le mot à faire deviner.
-- les autres joueurs donnent tour à tour leur indice (qui doit être différent du mot caché), qui sera ensuite stocké dans une liste
+- les autres joueurs donnent tour à tour leur indice (différent du mot caché), qui sera entré dans la console et stocké dans une liste d'indices
 - une fois que tous les joueurs ont donné leur indices, on sélectionne parmi ceux-ci les indices valides et on les renvoie au joueur 1
 - le joueur 1 propose un mot qu'on compare avec le mot caché et s'il réussit, le nombre de points est augmenté de 1
 - la pioche perd 1 carte, et c'est maintenant au joueur 2
