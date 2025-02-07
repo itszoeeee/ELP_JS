@@ -11,7 +11,7 @@ function askQuestion(query) {
     return new Promise(resolve => rl.question(query, resolve));
 }
 
-// Liste des mots du dictionnaire
+// Dictionnaire de 150 mots 
 const dico = [
     "actrice", "alcool", "amitié", "amour", "année", "arbre", "argent", "argenté", "automne", "avion", 
     "balle", "blanc", "bleu", "bonté", "brouillard", "bus",  
@@ -70,7 +70,7 @@ function un_seul_mot(mot) {
     return /^(\s*)[^\s]+(\s*)$/.test(mot);
 }
 
-// Fonction pour afficher le résultat en fonction du score
+// Fonction pour afficher un commentaire en fonction du score
 function resultat(pts) {
     if (pts > 0 && pts <= 3) {
         return "Vous êtes très très nul";
@@ -130,7 +130,7 @@ async function jouer() {
 
             let indices_valides = [];
             for (let ind of indices) { // on parcoure la liste de tous les indices donnés
-                if (compteur(ind, indices) <= 1 && un_seul_mot(ind)) { // on vérifie que les indices soient valides càd ils n'apparaissent qu'une seule fois et ils n'ont pas d'espace (car pas de mot composé autorisé)
+                if (compteur(ind, indices) <= 1 && un_seul_mot(ind)) { // on vérifie que les indices soient valides càd ils n'apparaissent qu'une seule fois (pas de répétition) et ils n'ont pas d'espace (car pas de mot composé autorisé)
                     indices_valides.push(ind);
                 }
             }
@@ -138,7 +138,7 @@ async function jouer() {
                 console.log("Voici les indices donnés :", indices_valides);
             }
             else {
-                console.log ("Il n'y a pas d'indices, tes coéquipiers n'ont pas eu d'inspi");
+                console.log ("Il n'y a pas d'indices, tes coéquipiers n'ont pas eu d'inspi :/");
             }
 
             const rep = await askQuestion(`${liste_joueurs[i]}, quel est votre mot ? -> `); // rep = REPonse donnée par le joueur
