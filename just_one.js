@@ -115,7 +115,6 @@ async function jouer() {
         const prenom = await askQuestion(`Prénom du joueur ${i + 1} : `);
         liste_joueurs.push(prenom);
     }
-    console.log("Démarrage du jeu...");
     let points = 0;
     let nbr_cartes_dans_pioche  = 13;
     let mots_deja_apparus = []; // pour qu'aucune carte n'ait les memes mots
@@ -128,7 +127,9 @@ async function jouer() {
                 });
     
             let carte = [getRandomWords(mots_deja_apparus)]; // nouvelle carte
+            if (nbr_cartes_dans_pioche!=13) {
             await sleep(3000); // on attend 3 secondes avant de recommencer un tour 
+            }
             console.log(carte);
             console.log('\n'.repeat(50));
             let nbr_dev; // nbr_dev = NomBRe qui correspond au mot à DEViner
