@@ -13,32 +13,32 @@ function askQuestion(query) {
 
 // Liste des mots du dictionnaire
 const dico = [
-    "actrice", "amitié", "amour", "année", "arbre", "argent", "argenté", "automne", "avion", 
-    "balle", "blanc", "bleu", "bonté", "brouillard",  
-    "casque","chaise", "chanson", "chat", "chaussure", "ciel", "circuit","classe", "colère", "couleur", "cuisine",  
-    "dauphin", "déni", "dessin","doré", "dormir", 
-    "eau", "école", "écriture", "élève", "espoir", "été", "étoile", "examen",  
-    "fenêtre", "film", "Finlande", "fleur", "fromage", "fruit",  
-    "gris",  
+    "actrice", "alcool", "amitié", "amour", "année", "arbre", "argent", "argenté", "automne", "avion", 
+    "balle", "blanc", "bleu", "bonté", "brouillard", "bus",  
+    "casque","chaise", "chanson", "chat", "chaussure", "chocolat", "ciel", "cinéma", "circuit","classe", "code", "colère", "couleur", "cuisine",  
+    "danse", "dauphin", "déni", "dessin","doré", "dormir", "dragon",
+    "eau", "école", "écriture", "élève", "espoir", "été", "étoile", "Europe", "examen",  
+    "fenêtre", "film", "Finlande", "fleur", "fromage", "fruit", "fuschia",
+    "gris", "guépard",
     "hérisson", "hiver", "hydrogène",  
-    "insecte", "Italie", 
+    "indice","insecte", "Italie", 
     "jaune", "jeu", "joie", "jour", 
-    "kayak","kiwi", 
-    "lecture", "légume", "livre", "loisir", "lune",  
-    "maison", "matin", "marron", "mélodie", "mer", "mois", "mort", "montagne", "musique",  
+    "kayak","kiwi", "koala",
+    "langage", "lecture", "légume", "livre", "loisir", "lune",  
+    "maison", "malade", "matin", "marron", "mélodie", "mer", "mois", "mort", "montagne", "mur", "musique",  
     "nature", "neige", "noir", "note", "nuit", "nuage",  
-    "ordinateur", "oiseau", "or", "oxydation",  
+    "ordinateur", "oiseau", "or", "oublier", "oxydation",  
     "papillon", "papier", "peur", "pizza","plage", "pain", "plante", "pluie", "poney", "porte", "printemps", "professeur",
     "question", "quille", "quokka", 
-    "restaurant", "respirer", "réveil", "rire", "rose", "rouge", "routeur",  
-    "sable", "salade", "saison", "semaine", "soleil", "sommeil", "soir", "sport", "stylo",  
-    "table", "tempête", "téléphone", "tristesse", "travail",  
-    "usine",
+    "renard", "restaurant", "respirer", "réveil", "rire", "rose", "rouge", "routeur",  
+    "sable", "salade", "saison", "semaine", "ski", "soleil", "sommeil", "soir", "sport", "stylo",  
+    "table", "tempête", "téléphone", "tristesse", "trompette","travail",  
+    "unique","usine",
     "vacances", "vent", "vert", "vêtement", "vie", "violet", "voiture",
     "wagon", "wombat",
     "xylophone",
     "yaourt",
-    "zèbre"
+    "zèbre", "zinc",
     ];
 
 // Fonction pour choisir cinq mots aléatoires pour creer une carte
@@ -46,7 +46,7 @@ function getRandomWords() {
     let mots_aleatoire = [];
     while (mots_aleatoire.length < 5) {
         let randomIndex = Math.floor(Math.random() * dico.length);
-        if (!mots_aleatoire.includes(dico[randomIndex])) {
+        if (!mots_aleatoire.includes(dico[randomIndex])) { // on vérifie que ce soit des mots distincts
             mots_aleatoire.push(dico[randomIndex]);
         }
     }
