@@ -109,12 +109,12 @@ async function jouer() {
             let carte = [getRandomWords()]; // nouvelle carte
             console.log("On pioche une nouvelle carte :");
             console.log(carte);
-            let dev;
+            let nbr_dev; // nbr_dev = NomBRe qui correspond au mot à DEViner
             do {
-                dev = parseInt(await askQuestion(`${liste_joueurs[i]}, choisissez un chiffre entre 1 et 5 : `));
-            } while (!Number.isInteger(dev) || dev > 5 || dev < 1);
+                nbr_dev = parseInt(await askQuestion(`${liste_joueurs[i]}, choisissez un chiffre entre 1 et 5 : `));
+            } while (!Number.isInteger(nbr_dev) || nbr_dev > 5 || nbr_dev < 1);
 
-            const mot = carte[0][dev - 1];
+            const mot = carte[0][nbr_dev - 1];
             console.log("Le mot à deviner est :", mot);
 
             let indices = [];
@@ -141,7 +141,7 @@ async function jouer() {
                 console.log ("Il n'y a pas d'indices, tes coéquipiers n'ont pas eu d'inspi");
             }
 
-            const rep = await askQuestion(`${liste_joueurs[i]}, quel est votre mot ? -> `);
+            const rep = await askQuestion(`${liste_joueurs[i]}, quel est votre mot ? -> `); // rep = REPonse donnée par le joueur
             if (rep.toLowerCase() === mot.toLowerCase()) {
                 console.log("Bravo !");
                 points += 1;
