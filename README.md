@@ -8,7 +8,8 @@ La validité d'un indice se mesure à :<br>
 - son unicité (il n'a été donné qu'une fois) => fonction COMPTEUR(mot, liste) qui compte le nombre d'occurences d'un mot dans une liste
 - l'absence d'espaces (un seul mot) => fonction UN_SEUL_MOT(mot) qui s'assure de l'absence d'espaces dans une chaine de caractères
 - sa différence avec le mot proposé. <br>
-<br>Grâce à l'attribut .toLowerCase(), le code ne dinstingue pas les majuscules et les minuscules (ex italie = Italie = ITALIE). <br>
+<br>
+Grâce à l'attribut .toLowerCase(), le code ne dinstingue pas les majuscules et les minuscules (ex italie = Italie = ITALIE). <br>
 Le jeu se termine lorsque la pioche est vide (nous avons défini une constante nombre_cartes = 20) ou lorsque les joueurs atteignent le score de 13 points. <br>
 <br>
 Déroulement du jeu : <br>
