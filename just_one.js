@@ -123,7 +123,7 @@ async function jouer() {
                     while (indice_donne.toLowerCase() == mot.toLowerCase()) {
                         indice_donne = await askQuestion(`${liste_joueurs[j]}, il faut un indice différent du mot à faire deviner -> `);
                     }
-                    indices.push(indice_donne); // la liste de tous les indices données
+                    indices.push(indice_donne.trim()); // la liste de tous les indices données
                 }
             }
 
