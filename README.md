@@ -9,6 +9,7 @@ La validité d'un indice se mesure à :<br>
 <br>
 Grâce à l'attribut .toLowerCase(), le code ne dinstingue pas les majuscules et les minuscules (ex italie = Italie = ITALIE). <br>
 Le jeu se termine lorsque la pioche (13 cartes) est vide. <br>
+
 ### Déroulement du jeu :
 - le code commence par demander à l'utilisateur le nombre de joueurs et leurs prénoms
 - le 1er tour démarre. Une nouvelle carte de 5 mots aléatoires distincts choisis dans le dictionnaire donné (150 mots) est générée et affichée dans la console. Le joueur 1 est incité à choisir un chiffre entre 1 et 5, ce qui donnera le mot à faire deviner.
