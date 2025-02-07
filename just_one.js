@@ -108,10 +108,10 @@ async function jouer() {
             let dev;
             do {
                 dev = parseInt(await askQuestion(`${liste_joueurs[i]}, choisissez un chiffre entre 1 et 5 : `));
-                if (dev > 5 || dev < 1) {
+                if (!Number.isInteger(dev) || dev > 5 || dev < 1) {
                     console.log("Veuillez choisir un chiffre entre 1 et 5 !");
                 }
-            } while (dev > 5 || dev < 1);
+            } while (!Number.isInteger(dev) || dev > 5 || dev < 1);
 
             const mot = carte[0][dev - 1];
             console.log("Le mot à deviner est :", mot);
