@@ -115,7 +115,7 @@ async function jouer() {
         const prenom = await askQuestion(`Prénom du joueur ${i + 1} : `);
         liste_joueurs.push(prenom);
     }
-    console.log("The game is starting...");
+    console.log("Démarrage du jeu...");
     let points = 0;
     let nbr_cartes_dans_pioche  = 13;
     let mots_deja_apparus = []; // pour qu'aucune carte n'ait les memes mots
