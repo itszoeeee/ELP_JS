@@ -48,7 +48,7 @@ function getRandomWords(mots_prec) {
     while (mots_aleatoire.length < 5) {
         let randomIndex = Math.floor(Math.random() * dico.length);
         word = dico[randomIndex]
-        if (!mots_aleatoire.includes(word) && !mots_prec.includes(word)) { // on vérifie que ce soit des mots distincts
+        if (!mots_aleatoire.includes(word) && !mots_prec.includes(word)) { // on vérifie que ce soit des mots distincts qui n'ont jamais été tirés avant
             mots_aleatoire.push(word);
             mots_prec.push(word);
         }
@@ -125,23 +125,25 @@ async function jouer() {
             let carte = [getRandomWords(mots_deja_apparus)]; // nouvelle carte
             console.log(`On pioche la ${14-nbr_cartes_dans_pioche}e carte :`);
             console.log(carte);
+            console.log('\n'.repeat(50));
             let nbr_dev; // nbr_dev = NomBRe qui correspond au mot à DEViner
             do {
                 nbr_dev = parseInt(await askQuestion(`${liste_joueurs[i]}, choisissez un chiffre entre 1 et 5 : `));
             } while (!Number.isInteger(nbr_dev) || nbr_dev > 5 || nbr_dev < 1);
 
             const mot = carte[0][nbr_dev - 1];
-            console.log("Le mot à deviner est :", mot);
+            console.log('\n'.repeat(50));
 
             let indices = [];
             for (let j = 0; j < nbr_joueurs; j++) {
                 if (j !== i) {
+                    console.log("Le mot à deviner est :", mot);
                     let indice_donne = await askQuestion(`${liste_joueurs[j]}, quel est votre indice ? -> `);
                     while (indice_donne.toLowerCase() == mot.toLowerCase()) {
                         indice_donne = await askQuestion(`${liste_joueurs[j]}, il faut un indice différent du mot à faire deviner -> `);
                     }
                     indices.push(indice_donne.trim()); // la liste de tous les indices données en enlevant les éventuels espaces
-                    
+                    console.log('\n'.repeat(50)); // on saute plein de lignes pour cacher l'indice du joueur précédent 
                 }
             }
             const data = indices.join('\n');  // Chaque élément de la liste sera sur une ligne différente
@@ -165,7 +167,7 @@ async function jouer() {
                 console.log ("Il n'y a pas d'indices, tes coéquipiers n'ont pas eu d'inspi :/");
             }
 
-            const rep = await askQuestion(`${liste_joueurs[i]}, quel est votre mot ? -> `); // rep = REPonse donnée par le joueur
+            const rep = await askQuestion(`${liste_joueurs[i]}, quel mot pensez-vous que vous aviez à deviner ? -> `); // rep = REPonse donnée par le joueur
             if (rep.toLowerCase() === mot.toLowerCase()) {
                 console.log("Bravo !");
                 points += 1;
