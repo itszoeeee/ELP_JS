@@ -1,7 +1,8 @@
 # ELP_JS : Réalisation du jeu Just One - Bleuenn EVEN et Zoé FEUILLOY
 
 ### Principe général
-Ce code JavaScript  recrée le jeu Just One. Dans cette version du projet, tout se passe sur la même interface, ainsi pour jouer correctement il faudrait une personne intermédiaire derrière l'écran qui annonce le mot caché à faire deviner et écrit dans la console les indices de chaque joueur. <br>
+Ce code JavaScript  recrée le jeu Just One. Dans cette version du projet, tout se passe sur la même interface.
+<br> Pour jouer, chaque joueur qui ne doit pas deviner le mot vient chacun son tour entrer son indice dans la console, puis le chercheur vient écrire sa proposition.<br>
 La validité d'un indice se mesure à :<br>
 - son unicité (il n'a été donné qu'une fois) => fonction COMPTEUR(mot, liste) qui compte le nombre d'occurences d'un mot dans une liste
 - l'absence d'espaces => fonction UN_SEUL_MOT(mot) qui s'assure de l'absence d'espaces dans une chaine de caractères mais les accepte au début ou à la fin
