@@ -1,3 +1,4 @@
+const fs = require('fs'); 
 const readline = require('readline');
 
 // Initialisation de readline pour les entrées utilisateur
@@ -91,6 +92,13 @@ function resultat(pts) {
 
 // Fonction principale du jeu
 async function jouer() {
+
+    fs.writeFile('indices.txt', 'Liste des indices donnés par tour', (err) => {
+        if (err) {
+            console.error('Erreur lors de l\'écriture dans le fichier', err);
+        }
+        });
+
     let nbr_joueurs;
     do {
         nbr_joueurs = parseInt(await askQuestion("Combien de joueurs ? -> "));
@@ -100,12 +108,18 @@ async function jouer() {
         const prenom = await askQuestion(`Prénom du joueur ${i + 1} : `);
         liste_joueurs.push(prenom);
     }
-
     
     let points = 0;
     let nbr_cartes_dans_pioche  = 13;
     while (nbr_cartes_dans_pioche > 0) { 
         for (let i = 0; i < nbr_joueurs; i++) { // pour tourner entre les joueurs
+            fs.appendFile('indices.txt', '\n\nIndices donnés au tour '+(14-nbr_cartes_dans_pioche) + ' :\n', (err) => {
+                if (err) {
+                    console.error('Erreur lors de l\'écriture dans le fichier', err);
+                }
+                });
+    
+            
             let carte = [getRandomWords()]; // nouvelle carte
             console.log("On pioche une nouvelle carte :");
             console.log(carte);
@@ -125,8 +139,16 @@ async function jouer() {
                         indice_donne = await askQuestion(`${liste_joueurs[j]}, il faut un indice différent du mot à faire deviner -> `);
                     }
                     indices.push(indice_donne.trim()); // la liste de tous les indices données en enlevant les éventuels espaces
+                    
                 }
             }
+            const data = indices.join('\n');  // Chaque élément de la liste sera sur une ligne différente
+
+            fs.appendFile('indices.txt', data, (err) => {
+            if (err) {
+                console.error('Erreur lors de l\'écriture dans le fichier', err);
+            }
+            });
 
             let indices_valides = [];
             for (let ind of indices) { // on parcoure la liste de tous les indices donnés
@@ -149,6 +171,7 @@ async function jouer() {
                 console.log("Non, le mot était :", mot);
             }
             nbr_cartes_dans_pioche -= 1; // on decremente le nombre de cartes a chaque tour 
+
         }
     }
 
