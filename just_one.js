@@ -12,6 +12,11 @@ function askQuestion(query) {
     return new Promise(resolve => rl.question(query, resolve));
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 // Dictionnaire de 150 mots 
 const dico = [
     "actrice", "alcool", "amitié", "amour", "année", "arbre", "argent", "argenté", "automne", "avion", 
@@ -110,7 +115,7 @@ async function jouer() {
         const prenom = await askQuestion(`Prénom du joueur ${i + 1} : `);
         liste_joueurs.push(prenom);
     }
-    
+    console.log("The game is starting...");
     let points = 0;
     let nbr_cartes_dans_pioche  = 13;
     let mots_deja_apparus = []; // pour qu'aucune carte n'ait les memes mots
@@ -123,12 +128,12 @@ async function jouer() {
                 });
     
             let carte = [getRandomWords(mots_deja_apparus)]; // nouvelle carte
-            console.log(`On pioche la ${14-nbr_cartes_dans_pioche}e carte :`);
+            await sleep(3000); // on attend 3 secondes avant de recommencer un tour 
             console.log(carte);
             console.log('\n'.repeat(50));
             let nbr_dev; // nbr_dev = NomBRe qui correspond au mot à DEViner
             do {
-                nbr_dev = parseInt(await askQuestion(`${liste_joueurs[i]}, choisissez un chiffre entre 1 et 5 : `));
+                nbr_dev = parseInt(await askQuestion(`Tour ${14-nbr_cartes_dans_pioche} : ${liste_joueurs[i]}, choisissez un chiffre entre 1 et 5 -> `));
             } while (!Number.isInteger(nbr_dev) || nbr_dev > 5 || nbr_dev < 1);
 
             const mot = carte[0][nbr_dev - 1];
@@ -169,7 +174,7 @@ async function jouer() {
 
             const rep = await askQuestion(`${liste_joueurs[i]}, quel mot pensez-vous que vous aviez à deviner ? -> `); // rep = REPonse donnée par le joueur
             if (rep.toLowerCase() === mot.toLowerCase()) {
-                console.log("Bravo !");
+                console.log("Bravo ! Vous marquez un point :)");
                 points += 1;
             } else {
                 console.log("Non, le mot était :", mot, "\n");
