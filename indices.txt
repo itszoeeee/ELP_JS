@@ -1,11 +1,1 @@
 Liste des indices donnés par tour
-
-Indices donnés au tour 1 :
-rh
-ezij
-
-Indices donnés au tour 2 :
-rjk
-rjk
-
-Indices donnés au tour 3 :

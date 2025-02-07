@@ -74,19 +74,19 @@ function un_seul_mot(mot) {
 // Fonction pour afficher un commentaire en fonction du score
 function resultat(pts) {
     if (pts > 0 && pts <= 3) {
-        return "Vous êtes très très nul";
+        return "Essayez encore.";
     } else if (pts > 3 && pts <= 6) {
-        return "Mouais vous pouvez réessayez";
+        return "C'est un bon début. Réessayez.";
     } else if (pts > 6 && pts <= 8) {
-        return "C'est la moyenne quoi";
+        return "Vous êtes dans la moyenne. Arriverez-vous à faire mieux ?";
     } else if (pts > 8 && pts <= 10) {
-        return "Ok ok c'est pas si mal i guess";
+        return "Waouh pas mal du tout.";
     } else if (pts === 11) {
-        return "Cool";
+        return "Génial ! C'est un score qui se fête !";
     } else if (pts === 12) {
-        return "Si près et pourtant si loin";
+        return "Incroyable ! Vos amis doivent être impressionés !";
     } else if (pts === 13) {
-        return "WOW BRAVO VOUS ETES TROP TROP FORTS CEST TROP INCROYABLE";
+        return "SCORE PARFAIT !!";
     }
 }
 
@@ -121,7 +121,7 @@ async function jouer() {
     
             
             let carte = [getRandomWords()]; // nouvelle carte
-            console.log("On pioche une nouvelle carte :");
+            console.log(`On pioche la ${14-nbr_cartes_dans_pioche}e carte :`);
             console.log(carte);
             let nbr_dev; // nbr_dev = NomBRe qui correspond au mot à DEViner
             do {
@@ -168,7 +168,7 @@ async function jouer() {
                 console.log("Bravo !");
                 points += 1;
             } else {
-                console.log("Non, le mot était :", mot);
+                console.log("Non, le mot était :", mot, "\n");
             }
             nbr_cartes_dans_pioche -= 1; // on decremente le nombre de cartes a chaque tour 
 
