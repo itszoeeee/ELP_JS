@@ -1,8 +1,7 @@
-# ELP_JS
+# ELP_JS : Réalisation du jeu Just One - Bleuenn EVEN et Zoé FEUILLOY
 
-### Réalisation du jeu Just One - Bleuenn EVEN et Zoé FEUILLOY
-
-Nous avons créé un code JavaScript qui recrée le jeu Just One. <br>
+Nous avons créé un code JavaScript qui recrée le jeu Just One. <br> 
+### Principe général
 Pour l'instant, tout se passe sur la même interface, ainsi pour jouer correctement il faudrait une personne intermédiaire derrière l'écran qui annonce le mot caché à faire deviner et écrit dans la console les indices de chaque joueur. <br>
 La validité d'un indice se mesure à :<br>
 - son unicité (il n'a été donné qu'une fois) => fonction COMPTEUR(mot, liste) qui compte le nombre d'occurences d'un mot dans une liste
@@ -10,7 +9,8 @@ La validité d'un indice se mesure à :<br>
 - sa différence exacte avec le mot proposé (indice_donné != mot)
 <br><br>Grâce à l'attribut .toLowerCase(), le code ne dinstingue pas les majuscules et les minuscules (ex italie = Italie = ITALIE). <br>
 Le jeu se termine lorsque la pioche (13 cartes) est vide. <br>
-<br>Déroulement du jeu :
+<br>
+### Déroulement du jeu :
 - le code commence par demander à l'utilisateur le nombre de joueurs et leurs prénoms
 - le 1er tour démarre. Une nouvelle carte de 5 mots aléatoires distincts choisis dans le dictionnaire donné (150 mots) est générée et affichée dans la console. Le joueur 1 est incité à choisir un chiffre entre 1 et 5, ce qui donnera le mot à faire deviner.
 - les autres joueurs donnent tour à tour leur indice (différent du mot caché), qui sera entré dans la console et stocké dans une liste d'indices, ainsi que dans un fichier de format .txt qui liste tous les indices (valides ou non) donnés par tour
@@ -19,3 +19,6 @@ Le jeu se termine lorsque la pioche (13 cartes) est vide. <br>
 - la pioche perd 1 carte, et c'est maintenant au joueur 2
 - les tours continuent jusqu'à ce que les joueurs atteignent 13 points ou que la pioche soit vide
 - après la fin de la partie, le score est affiché
+<br>
+### Lancement du programme :
+Ouvrez une invite de commande cmd.exe et rendez-vous dans le répertoire où se trouvent les fichiers. Entrez "npm install" puis "npm start".
