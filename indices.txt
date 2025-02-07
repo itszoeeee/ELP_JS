@@ -1,1 +1,3 @@
 Liste des indices donnés par tour
+
+Indices donnés au tour 1 :

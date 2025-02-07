@@ -43,12 +43,14 @@ const dico = [
     ];
 
 // Fonction pour choisir cinq mots aléatoires pour creer une carte
-function getRandomWords() {
+function getRandomWords(mots_prec) {
     let mots_aleatoire = [];
     while (mots_aleatoire.length < 5) {
         let randomIndex = Math.floor(Math.random() * dico.length);
-        if (!mots_aleatoire.includes(dico[randomIndex])) { // on vérifie que ce soit des mots distincts
-            mots_aleatoire.push(dico[randomIndex]);
+        word = dico[randomIndex]
+        if (!mots_aleatoire.includes(word) && !mots_prec.includes(word)) { // on vérifie que ce soit des mots distincts
+            mots_aleatoire.push(word);
+            mots_prec.push(word);
         }
     }
     return mots_aleatoire;
@@ -111,6 +113,7 @@ async function jouer() {
     
     let points = 0;
     let nbr_cartes_dans_pioche  = 13;
+    let mots_deja_apparus = []; // pour qu'aucune carte n'ait les memes mots
     while (nbr_cartes_dans_pioche > 0) { 
         for (let i = 0; i < nbr_joueurs; i++) { // pour tourner entre les joueurs
             fs.appendFile('indices.txt', '\n\nIndices donnés au tour '+(14-nbr_cartes_dans_pioche) + ' :\n', (err) => {
@@ -119,8 +122,7 @@ async function jouer() {
                 }
                 });
     
-            
-            let carte = [getRandomWords()]; // nouvelle carte
+            let carte = [getRandomWords(mots_deja_apparus)]; // nouvelle carte
             console.log(`On pioche la ${14-nbr_cartes_dans_pioche}e carte :`);
             console.log(carte);
             let nbr_dev; // nbr_dev = NomBRe qui correspond au mot à DEViner
@@ -174,7 +176,7 @@ async function jouer() {
 
         }
     }
-
+    console.log(mots_deja_apparus);
     console.log("Fin de la partie. ");
     console.log(`Vous avez réussi à deviner ${points} cartes avec succès. ${resultat(points)}`);
     rl.close();
