@@ -19,4 +19,3 @@ Le jeu se termine lorsque la pioche est vide (nous avons défini une constante n
 - la pioche perd 1 carte, et c'est maintenant au joueur 2
 - les tours continuent jusqu'à ce que les joueurs atteignent 13 points ou que la pioche soit vide
 - après la fin de la partie, le score est affiché
-<br><br> Le code est assez primaire, notamment dans la gestion des indices. De plus on ne gère pas l'égalité en cas d'espace, par exemple "chat" et "chat " seront considérés comme deux mots différents.
