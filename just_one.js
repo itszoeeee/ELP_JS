@@ -181,10 +181,9 @@ async function jouer() {
                 console.log("Non, le mot était :", mot, "\n");
             }
             nbr_cartes_dans_pioche -= 1; // on decremente le nombre de cartes a chaque tour 
-
         }
     }
-    console.log(mots_deja_apparus);
+    
     console.log("Fin de la partie. ");
     console.log(`Vous avez réussi à deviner ${points} cartes avec succès. ${resultat(points)}`);
     rl.close();
