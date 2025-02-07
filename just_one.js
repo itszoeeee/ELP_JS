@@ -65,6 +65,7 @@ function compteur(mot, liste) {
 }
 
 // Fonction qui vérifie qu'un mot ne contient pas d'espace sauf au début ou à la fin 
+// exemple "petit chat" -> false et "  chat" -> true
 function un_seul_mot(mot) {
     return /^(\s*)[^\s]+(\s*)$/.test(mot);
 }
@@ -123,7 +124,7 @@ async function jouer() {
                     while (indice_donne.toLowerCase() == mot.toLowerCase()) {
                         indice_donne = await askQuestion(`${liste_joueurs[j]}, il faut un indice différent du mot à faire deviner -> `);
                     }
-                    indices.push(indice_donne.trim()); // la liste de tous les indices données
+                    indices.push(indice_donne.trim()); // la liste de tous les indices données en enlevant les éventuels espaces
                 }
             }
 
