@@ -9,7 +9,6 @@ La validité d'un indice se mesure à :<br>
 - sa différence exacte avec le mot proposé (indice_donné != mot)
 <br><br>Grâce à l'attribut .toLowerCase(), le code ne dinstingue pas les majuscules et les minuscules (ex italie = Italie = ITALIE). <br>
 Le jeu se termine lorsque la pioche (13 cartes) est vide. <br>
-<br>
 ### Déroulement du jeu :
 - le code commence par demander à l'utilisateur le nombre de joueurs et leurs prénoms
 - le 1er tour démarre. Une nouvelle carte de 5 mots aléatoires distincts choisis dans le dictionnaire donné (150 mots) est générée et affichée dans la console. Le joueur 1 est incité à choisir un chiffre entre 1 et 5, ce qui donnera le mot à faire deviner.
@@ -19,6 +18,5 @@ Le jeu se termine lorsque la pioche (13 cartes) est vide. <br>
 - la pioche perd 1 carte, et c'est maintenant au joueur 2
 - les tours continuent jusqu'à ce que les joueurs atteignent 13 points ou que la pioche soit vide
 - après la fin de la partie, le score est affiché
-<br>
 ### Lancement du programme :
 Ouvrez une invite de commande cmd.exe et rendez-vous dans le répertoire où se trouvent les fichiers. Entrez "npm install" puis "npm start".
